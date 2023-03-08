@@ -32,7 +32,7 @@ namespace Game
 
         public void Run()
         {
-            //world.Spawn();
+            world.Spawn();
 
             while (window.IsOpen)
             {
@@ -43,7 +43,7 @@ namespace Game
                 window.DispatchEvents();
 
                 // Draw the paths of the current best individual
-                //screen.UpdateSequence(world.GetBestNeighbour().Sequence);
+                screen.UpdateSequence(world.GetBestNeighbour().Sequence);
 
                 screen.Draw();
 

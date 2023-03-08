@@ -21,13 +21,17 @@ namespace Game.GeneticAlgorithm
             // Generate {PopulationCount} neighbours
             for(int i = 0; i < PopulationCount; i++)
             {
-                this.Neighbours.Add(GenerateNeighbour());
+                this.Neighbours.Add(GenerateNeighbor());
             }
         }
 
-        private Neighbour GenerateNeighbour()
+        private Neighbour GenerateNeighbor()
         {
-            throw new NotImplementedException();
+            List<int> sequence = Enumerable.Range(0, 10).ToList();
+
+            sequence.Shuffle();
+
+            return new Neighbour(sequence);
         }
 
         public void DoGeneration()

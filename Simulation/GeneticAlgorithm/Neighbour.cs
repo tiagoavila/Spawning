@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using SFML.System;
 
 namespace Game.GeneticAlgorithm
 {
@@ -18,7 +19,22 @@ namespace Game.GeneticAlgorithm
 
         public double GetFitness()
         {
-            return random.NextDouble();
+            double totalDistance = 0.0;
+
+            for (int i = 1; i < Sequence.Count; i++)
+            {
+                Vector2f fromTown = TownHelper.TownPositions[Sequence[i - 1]];
+                Vector2f toTown = TownHelper.TownPositions[Sequence[i]];
+
+                float x = toTown.X - fromTown.X;
+                float y = toTown.Y - fromTown.Y;
+
+                double d = Math.Sqrt(x * x + y * y);
+
+                totalDistance += d;
+            }
+
+            return totalDistance;
         }
     }
 }
